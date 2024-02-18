@@ -91,7 +91,7 @@ pnumber.addEventListener("keyup",function(event){
         
     }    
 })
-document.getElementById('end').addEventListener('click',function(){
+document.getElementById('close').addEventListener('click',function(){
     location.reload();
 
 })
