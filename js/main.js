@@ -4,19 +4,7 @@ function goTo(){
         p.scrollIntoView({behavior:"smooth"});
     }
 }
- let i = 0
-// const x = document.getElementsByClassName('handle')
-// for(const z of x){
-//     z.addEventListener('click',function(event){
-//         z.classList.add(selected)
-//         z.style.backgroundColor ="blue"
-//         i++
-//         setValue('available',i)
-//         if(i>=4){
-//           disableAllButtons();
-//         }
-//     })
-// }
+
 
 const x = document.getElementsByClassName('handle');
 let selectedSeats = 0;
@@ -41,15 +29,20 @@ for (const z of x) {
             if (selectedSeats >= 4) {
                 disableAllButtons();
                 const r = document.getElementById('coupon')
-                r.disabled = false
+                const xo = document.getElementById('apply')
+                xo.disabled = false
                 const applyButton = document.getElementById('apply');
 
               applyButton.addEventListener('click', function () {
         if (r.value === "NEW15" || r.value === 'Couple 20') {
             if (r.value === "NEW15") {
                 setValue('grand', getValue('total-price') - (getValue('total-price') * 0.15));
+                printdiscount((getValue('total-price') * 0.15))
+                console.log(document.getElementsByClassName('Discount'))
             } else if (r.value === "Couple 20") {
                 setValue('grand', getValue('total-price') - (getValue('total-price') * 0.20));
+                printdiscount((getValue('total-price') * 0.20))
+                console.log(document.getElementsByClassName('Discount'))
             }
             applyButton.classList.add("hidden")
             r.classList.add("hidden")
@@ -69,12 +62,17 @@ for (const z of x) {
             selectedSeats--;
             setValue('available', selectedSeats);
             erase('printprice',z.innerText)
+            erase('discount','Discount')
+            console.log(document.getElementsByClassName('Discount'))
             setValue('total-price',update_price(selectedSeats))
             setValue('seat',getValue('seat')+1)
             setValue('grand',getValue('total-price'))
-            const r = document.getElementById('coupon')
-            r.disabled = true
+            const xo = document.getElementById('apply')
+            xo.disabled = true
             enableAllButtons();
+            document.getElementById('coupon').classList.remove('hidden')
+            document.getElementById('coupon').value = ''
+            document.getElementById('apply').classList.remove('hidden')
         }
     });
    

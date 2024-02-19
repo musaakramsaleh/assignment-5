@@ -39,6 +39,21 @@ function printtotal(x){
    div.appendChild(p3)
    w.appendChild(div)
 }
+function printdiscount(x){
+    const w = document.getElementById("discount")
+    const div = document.createElement("div")
+    const p1 = document.createElement('p')
+    const p2 = document.createElement('p')
+    p1.innerText = "Discount"
+    p2.innerText = 'BDT'+' '+x
+    p1.classList.add("inter","font-medium","text-[16px]")
+    p2.classList.add("inter","font-medium","text-[16px]")
+    div.classList.add('flex','justify-between','mt-4')
+    div.classList.add('Discount')
+    div.appendChild(p1)
+    div.appendChild(p2)
+    w.appendChild(div)
+ }
 function update_price(w){
     return w * 550  
 }
@@ -46,7 +61,7 @@ function erase(elementId,p){
     const w = document.getElementById(elementId)
     for(so of w.children){
         if(so.classList.contains(p)){
-            so.classList.add('hidden')
+            w.removeChild(so);
         }
     }
 }
@@ -59,5 +74,15 @@ function updateButtonState(selected) {
         yourButton.disabled = false;
     } else {
         yourButton.disabled = true;
+    }
+}
+
+function removediscount(){
+    var parent = document.getElementById("discount");
+    var className = "Discount";
+    for (let w of parent) {
+        if (w.classList.contains(className)) {
+            childNode.innerHTML = ''
+        }
     }
 }
