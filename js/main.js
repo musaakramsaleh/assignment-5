@@ -1,5 +1,5 @@
 function goTo(){
-    const p = document.getElementById("ticket")
+    const p = document.getElementById("ticket-area")
     if(p){
         p.scrollIntoView({behavior:"smooth"});
     }
